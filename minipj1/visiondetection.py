@@ -47,19 +47,24 @@ class VisionDetction():
         return label_dict
 
     @staticmethod
-    def MakeSrc(label_dict):
+    def MakeSrc(label_dict, rate=1):
         path = os.path.dirname(__file__)
         f1 = open(path + '/tmp.srt','w')
         time_list = ['00','00','00']
+        second = '000'
+        time = 0
         for i in range(len(label_dict)):
             labels = ' '.join(label_dict[str(i+1)])
-            start_time = ':'.join(time_list) + '.000'
+            start_time = ':'.join(time_list) + '.' + second
+            time += 1/rate
+            time = round(time, 3)
+            time_list[2] , second = str(time).split('.')
             if int(time_list[2]) < 59:
                 time_list[2] = str(int(time_list[2])+1)
             else:
                 time_list[1] = str(int(time_list[1])+1)
                 time_list[2] = '00'
-            end_time = ':'.join(time_list) + '.000'
+            end_time = ':'.join(time_list) + '.' + second
             label_line = ''.join(labels)
             #print(label_line)
             thisline = [str(i+1), start_time + ' --> ' + end_time, label_line]
@@ -73,4 +78,4 @@ class VisionDetction():
 if __name__ == '__main__':
     vd = VisionDetction()
     label_dict = vd.GenerateTypes()
-    vd.MakeSrc(label_dict)
+    vd.MakeSrc(label_dict, rate=2)
