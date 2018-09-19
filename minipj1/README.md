@@ -14,7 +14,7 @@ Project 1  API Mini-Project
 # Usage
 Put your google vision key file under project folder
 
-python main.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m)
+python main.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m 1)
 
 -r number of pictures per minute, default=1
 
