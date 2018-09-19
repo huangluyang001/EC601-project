@@ -30,7 +30,10 @@ class GetJpgFromTweet():
         path = 'image/'
         image = io.imread(url)
         height, width = image.shape[:2]
-        image = transform.resize(image, (math.floor(height/2)*2, math.floor(width/2)*2))
+        if height < width:
+            image = transform.resize(image, (math.floor(height/2)*2, math.floor(height/2)*2))
+        else:
+            image = transform.resize(image, (math.floor(height / 2) * 2, math.floor(width / 2) * 2))
         io.imsave(path + filename, image)
 
     def FromMyHome(self, count=100):
@@ -64,7 +67,7 @@ class GetJpgFromTweet():
 
         api = tweepy.API(auth)
 
-        users = api.search_users(keyword, page=math.ceil(numofuser/20), per_page=20)
+        users = api.search_users(keyword, page=math.ceil(numofuser/20), per_page=numofuser)
         logging.info('num of users:{num}'.format(num=len(users)))
         user_list = []
         for i in range(numofuser):
@@ -107,9 +110,9 @@ class GetJpgFromTweet():
 
 
 
-
-if __name__ == "__main__":
-    logging.basicConfig(level='INFO')
-    twitter = GetJpgFromTweet()
-    #twitter.FromMyHome()
-    twitter.FromSpecificUser(keyword='ronaldo',count=100, numofuser=50)
+#
+# if __name__ == "__main__":
+    # logging.basicConfig(level='INFO')
+    # twitter = GetJpgFromTweet()
+    # #twitter.FromMyHome()
+    # twitter.FromSpecificUser(keyword='ronaldo',count=100, numofuser=50)

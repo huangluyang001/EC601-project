@@ -14,7 +14,7 @@ class MakeVideo():
         self.output = ['final.mkv']
         self.t = ['-t', '40']
 
-    def makevideo(self, rate=1, output_dir='final.mkv'):
+    def makevideo(self, rate=1., output_dir='final.mkv'):
         #print(self.file)
         self.output[0] = output_dir
         self.rate[1] = str(rate)
@@ -26,4 +26,4 @@ class MakeVideo():
 
 if __name__ == '__main__':
     mv = MakeVideo()
-    mv.makevideo(rate=2, output_dir='final.mkv')
+    mv.makevideo(rate=1.000, output_dir='final.mkv')
