@@ -10,10 +10,10 @@ import shutil, logging, time
 
 class GetJpgFromTweet():
     def __init__(self):
-        self.consumer_key = 'e5gO5clmQpJIAoV75iylJS0sC'
-        self.consumer_secret = 's895ZsN7YamnS5nJgCqPMJo7mPLEik0pSntosubtbX7vS0OZde'
-        self.access_token = '1039164455215681541-CCbN18bRzEcqYQ8oGea9hzs8360xky'
-        self.access_secret = 'Y9VpDluRCxibATp9QBF5qexGA7SRxJZt3dOl85LdAhT0r'
+        self.consumer_key = ''
+        self.consumer_secret = ''
+        self.access_token = ''
+        self.access_secret = ''
         if os.path.exists('image/') == True:
             shutil.rmtree('image')
         time.sleep(1)
