@@ -27,3 +27,7 @@ python main.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m 1)
 -n number of users to get from the same keyword, no larger than 200
 
 -m grap from my homeline(-c,-k will have no function if you use -m)
+
+# update 0921
+1. remove my key for twitter developer. So user should add your own in tweep.py line13-16. -m parameter will return pictures from your own homeline
+2. When having no pictures, raise error and raise warning when having more than 100 pictures.
