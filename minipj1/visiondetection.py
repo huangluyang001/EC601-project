@@ -19,6 +19,7 @@ class VisionDetction():
         credentials = service_account.Credentials.from_service_account_file(filename)
         return credentials
 
+    # Get description for pictures using Google Vision
     def GenerateTypes(self):
         #self.SetEnvironment()
         pwd = os.getcwd()
@@ -27,6 +28,10 @@ class VisionDetction():
         client = vision.ImageAnnotatorClient(credentials=credentials)
         route = os.path.join(os.path.dirname(__file__), self.path)
         filenames = glob.glob(route + '/*.jpg')
+        if len(filenames) == 0:
+            raise Exception('None pictures found. Try to increase count of homelines or user numbers.')
+        elif len(filenames) > 100:
+            raise Warning('Too much pictures. May take long time to run.')
         label_dict = {}
         for filename in filenames:
             image = io.open(filename, 'rb')
@@ -46,6 +51,7 @@ class VisionDetction():
             label_dict.setdefault(number, label_list)
         return label_dict
 
+    # make caption for pitures
     @staticmethod
     def MakeSrc(label_dict, rate=1.):
         path = os.path.dirname(__file__)

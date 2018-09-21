@@ -19,6 +19,7 @@ class GetJpgFromTweet():
         time.sleep(1)
         os.mkdir('image')
 
+    # Get pictures from homelines of a user
     @staticmethod
     def GetJpgFromUrl(url, filename):
         #response = rq.get(url)
@@ -36,6 +37,7 @@ class GetJpgFromTweet():
             image = transform.resize(image, (math.floor(height / 2) * 2, math.floor(width / 2) * 2))
         io.imsave(path + filename, image)
 
+    # Get pictures from developer's homeline
     def FromMyHome(self, count=100):
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token, self.access_secret)
@@ -61,6 +63,7 @@ class GetJpgFromTweet():
             filename = str(i) + '.jpg'
             self.GetJpgFromUrl(url, filename)
 
+    # Input keywords and count, search pictures from users' homelines.
     def FromSpecificUser(self, keyword='Messi', numofuser=5, count=100):
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token, self.access_secret)
@@ -83,6 +86,8 @@ class GetJpgFromTweet():
         error_count = 0
         true_count = 0
         url_list = []
+        if len(user_list) == 0:
+            raise Exception('No valid users found, please change keyword.')
         for j in range(len(user_list)):
             name = user_list[j]
             try:
