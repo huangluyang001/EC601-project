@@ -14,6 +14,7 @@ class MakeVideo():
         self.output = ['final.mkv']
         self.t = ['-t', '40']
 
+    # use ffmpeg to make video
     def makevideo(self, rate=1., output_dir='final.mkv'):
         #print(self.file)
         self.output[0] = output_dir
