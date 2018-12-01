@@ -10,14 +10,15 @@ import shutil, logging, time
 
 class GetJpgFromTweet():
     def __init__(self):
-        self.consumer_key = ''
-        self.consumer_secret = ''
-        self.access_token = ''
-        self.access_secret = ''
+        self.consumer_key = 'e5gO5clmQpJIAoV75iylJS0sC'
+        self.consumer_secret = 's895ZsN7YamnS5nJgCqPMJo7mPLEik0pSntosubtbX7vS0OZde'
+        self.access_token = '1039164455215681541-CCbN18bRzEcqYQ8oGea9hzs8360xky'
+        self.access_secret = 'Y9VpDluRCxibATp9QBF5qexGA7SRxJZt3dOl85LdAhT0r'
         if os.path.exists('image/') == True:
             shutil.rmtree('image')
         time.sleep(1)
-        os.mkdir('image')
+        if not os.path.exists('image'):
+            os.mkdir('image')
 
     # Get pictures from homelines of a user
     @staticmethod
@@ -73,12 +74,14 @@ class GetJpgFromTweet():
         users = api.search_users(keyword, page=math.ceil(numofuser/20), per_page=numofuser)
         logging.info('num of users:{num}'.format(num=len(users)))
         user_list = []
+        user_info = ''
         for i in range(numofuser):
             try:
                 user_list.append(users[i].name)
             except IndexError:
-                print('Userss are not enough, only {number} users are found'.format(number=i))
+                print('Users are not enough, only {number} users are found'.format(number=i))
                 break
+            user_info += users[i].screen_name + '\n'
             print('No.{number} User id: {name}'.format(number=i, name=users[i].id))
             print('No.{number} User {name}: '.format(number=i, name=users[i].name))
             print('No.{number} User screenname: {name}'.format(number=i,name=users[i].screen_name))
@@ -110,6 +113,7 @@ class GetJpgFromTweet():
             filename = str(i) + '.jpg'
             self.GetJpgFromUrl(url, filename)
 
+        return user_info, true_count
 
 
 
