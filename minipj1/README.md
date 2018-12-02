@@ -98,7 +98,7 @@ The usage is similar to mongodb.py
 ## Usage  
 -w search for certain keyword  
 sample output:  
-# of information:  4  
+number of information:  4  
 most common user and count:  luyang 3  
 most common keyword and count:  jerry 3  
 number of information under your keyword:  4  
