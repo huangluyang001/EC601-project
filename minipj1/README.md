@@ -33,8 +33,9 @@ python main.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m 1)
 2. When having no pictures, raise error and raise warning when having more than 100 pictures.
 
 # update pj3
-1. mongodb.py store information in mongodb.  
-# Usage  
+# mongodb.py  
+mongodb.py store information in mongodb.  
+## Usage  
 Put your google vision key file under project folder
 
 python mongodb.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m 1)
@@ -67,7 +68,7 @@ python mongodb.py -r 1.0 -o final.mkv -k ronaldo -c 100 -n 10 (-m 1)
 -w search for certain keyword  
 The code will also generate some useful statistic info:  
 sample output:  
-# of information:  1
+number of information:  1
 most common user and count:  luyang 1  
 most common keyword and count:  jerry 1  
 Search results:   
